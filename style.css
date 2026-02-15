@@ -1,0 +1,120 @@
+
+body {
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.custom-scrollbar::-webkit-scrollbar { 
+  width: 5px; 
+}
+
+.custom-scrollbar::-webkit-scrollbar-track { 
+  background: #f8fafc; 
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb { 
+  background: #e2e8f0; 
+  border-radius: 10px; 
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar-thumb { 
+  background: #cbd5e1; 
+}
+
+/* Sidebar Link Base State */
+.sidebar-link {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left-width: 4px;
+}
+
+/* Sidebar Link Hover State (Inactive) */
+.sidebar-link:not(.active-sidebar-link):hover {
+  background-color: #eff6ff; /* blue-50 */
+  color: #2563eb; /* blue-600 */
+  border-color: #bfdbfe; /* blue-200 */
+  transform: translateX(6px);
+}
+
+/* Sidebar Link Active State */
+.active-sidebar-link {
+  background-color: #2563eb !important;
+  color: white !important;
+  border-color: #1e40af !important; /* blue-800 for contrast border */
+  box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
+  transform: translateX(8px);
+  font-weight: 700 !important;
+}
+
+/* Scroll Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tooltip Styles */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #1e293b;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Mobile Menu Transitions & Hierarchy */
+#mobile-menu {
+  will-change: transform;
+}
+
+/* Improved typography for hierarchy */
+#mobile-menu h4 {
+  font-feature-settings: "ss01", "ss02";
+  letter-spacing: 0.25em;
+}
+
+/* Overlay dimming enhancement */
+#menu-overlay.opacity-100 {
+  backdrop-filter: blur(8px);
+}
+
+@media print {
+  .no-print { 
+    display: none !important; 
+  }
+  body { 
+    background: white; 
+    color: black; 
+  }
+  .bg-slate-900 { 
+    background: white !important; 
+    color: black !important; 
+    border: 1px solid #eee; 
+  }
+}
